@@ -1,16 +1,16 @@
 # djBank — Bank Account Transaction Management System
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.12.10-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.12.10">
-  <img src="https://img.shields.io/badge/Django-6.1-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django 6.1">
-  <img src="https://img.shields.io/badge/SQLite-3.49.1-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite 3.49.1">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
-  <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
-  <img src="https://img.shields.io/badge/Bootstrap-5.3.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap 5.3.3">
-  <img src="https://img.shields.io/badge/Chart.js-4.4-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white" alt="Chart.js 4.4">
-  <img src="https://img.shields.io/badge/Font_Awesome-6.5.1-528DD7?style=for-the-badge&logo=fontawesome&logoColor=white" alt="Font Awesome 6.5.1">
-  <img src="https://img.shields.io/badge/Google_Fonts-Inter%20%26%20JetBrains%20Mono-4285F4?style=for-the-badge&logo=googlefonts&logoColor=white" alt="Google Fonts">
+  <img src="https://img.shields.io/badge/Python-3.12.10-3776AB?style=for-the-badge&logo=python" alt="Python 3.12.10">
+  <img src="https://img.shields.io/badge/Django-6.1-092E20?style=for-the-badge&logo=django&logoColor=44B78B" alt="Django 6.1">
+  <img src="https://img.shields.io/badge/SQLite-3.49.1-003B57?style=for-the-badge&logo=sqlite&logoColor=003B57" alt="SQLite 3.49.1">
+  <img src="https://img.shields.io/badge/HTML-5-E34F26?style=for-the-badge&logo=html5" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS-3-1572B6?style=for-the-badge&logo=css&logoColor=1572B6" alt="CSS3">
+  <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Bootstrap-5.3.3-7952B3?style=for-the-badge&logo=bootstrap" alt="Bootstrap 5.3.3">
+  <img src="https://img.shields.io/badge/Chart.js-4.4-FF6384?style=for-the-badge&logo=chartdotjs" alt="Chart.js 4.4">
+  <img src="https://img.shields.io/badge/Font_Awesome-6.5.1-528DD7?style=for-the-badge&logo=fontawesome" alt="Font Awesome 6.5.1">
+  <img src="https://img.shields.io/badge/Google_Fonts-Inter%20%26%20JetBrains%20Mono-4285F4?style=for-the-badge&logo=googlefonts" alt="Google Fonts">
 </p>
 
 A secure, modern, full-featured Bank Account Transaction Management System built with **Django**, **Bootstrap 5**, and **Chart.js**, featuring modern aesthetics, dark/light theme switching, and real-time transaction tracking.
@@ -40,16 +40,17 @@ A secure, modern, full-featured Bank Account Transaction Management System built
 
 | Layer / Category | Technology / Badge | Details & Purpose |
 | :--- | :--- | :--- |
-| **Language** | ![Python](https://img.shields.io/badge/Python-3.12.10-3776AB?style=flat-square&logo=python&logoColor=white) | **Python 3.12.10** — Core backend programming language |
-| **Backend Framework** | ![Django](https://img.shields.io/badge/Django-6.1-092E20?style=flat-square&logo=django&logoColor=white) | **Django 6.1** — High-level web framework (MTV architecture, ORM, Forms, Auth, Access Control) |
-| **Database Engine** | ![SQLite](https://img.shields.io/badge/SQLite-3.49.1-003B57?style=flat-square&logo=sqlite&logoColor=white) | **SQLite 3.49.1** — Relational database storing user profiles, bank accounts, and transaction ledgers |
-| **Frontend Framework** | ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.3-7952B3?style=flat-square&logo=bootstrap&logoColor=white) | **Bootstrap 5.3.3** — Responsive UI grid layout, navbars, cards, badges, and modals |
-| **Data Visualization** | ![Chart.js](https://img.shields.io/badge/Chart.js-4.4-FF6384?style=flat-square&logo=chartdotjs&logoColor=white) | **Chart.js 4.4** — Interactive financial charts (Balance Growth Trend line chart & Cashflow breakdown doughnut chart) |
-| **Scripting & DOM** | ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black) | **JavaScript (ES6+)** — Dynamic dark/light theme toggle (`localStorage` integration), interactive password toggles & chart initialization |
-| **Markup & Styling** | ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) | **HTML5 & Vanilla CSS3** — Glassmorphism design tokens, CSS variables, smooth transitions & responsive typography |
-| **Icons & Typography** | ![Font Awesome](https://img.shields.io/badge/Font_Awesome-6.5.1-528DD7?style=flat-square&logo=fontawesome&logoColor=white) ![Google Fonts](https://img.shields.io/badge/Google_Fonts-4285F4?style=flat-square&logo=googlefonts&logoColor=white) | **FontAwesome 6.5.1**, **Google Fonts** (*Inter* for primary text, *JetBrains Mono* for financial values) |
-| **Data Export Engine** | ![CSV Export](https://img.shields.io/badge/CSV-Streaming_Export-217346?style=flat-square&logo=microsoft-excel&logoColor=white) | **Streaming CSV Exporter** — On-the-fly export of filtered transaction histories using Python's `csv` module |
-| **Testing & QA** | ![Django Test](https://img.shields.io/badge/Django-Test_Runner-44B78B?style=flat-square&logo=django&logoColor=white) | **Django TestCase** — Automated unit testing for auth, deposit logic, withdrawal validation & overdraft checks |
+| **Language** | ![Python](https://img.shields.io/badge/Python-3.12.10-3776AB?style=flat-square&logo=python) | **Python 3.12.10** — Core backend programming language |
+| **Backend Framework** | ![Django](https://img.shields.io/badge/Django-6.1-092E20?style=flat-square&logo=django&logoColor=44B78B) | **Django 6.1** — High-level web framework (MTV architecture, ORM, Forms, Auth, Access Control) |
+| **Database Engine** | ![SQLite](https://img.shields.io/badge/SQLite-3.49.1-003B57?style=flat-square&logo=sqlite&logoColor=003B57) | **SQLite 3.49.1** — Relational database storing user profiles, bank accounts, and transaction ledgers |
+| **Frontend Framework** | ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.3-7952B3?style=flat-square&logo=bootstrap) | **Bootstrap 5.3.3** — Responsive UI grid layout, navbars, cards, badges, and modals |
+| **UI Notifications** | ![Notyf](https://img.shields.io/badge/Notyf-Toast_Notifications-10B981?style=flat-square&logo=javascript) | **Notyf** — Clean, responsive JavaScript toast notifications for dynamic user feedback |
+| **Data Visualization** | ![Chart.js](https://img.shields.io/badge/Chart.js-4.4-FF6384?style=flat-square&logo=chartdotjs) | **Chart.js 4.4** — Interactive financial charts (Balance Growth Trend line chart & Cashflow breakdown doughnut chart) |
+| **Scripting & DOM** | ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript) | **JavaScript (ES6+)** — Dynamic dark/light theme toggle (`localStorage` integration), interactive password toggles & chart initialization |
+| **Markup & Styling** | ![HTML5](https://img.shields.io/badge/HTML-5-E34F26?style=flat-square&logo=html5) ![CSS3](https://img.shields.io/badge/CSS-3-1572B6?style=flat-square&logo=css&logoColor=1572B6) | **HTML5 & Vanilla CSS3** — Glassmorphism design tokens, CSS variables, smooth transitions & responsive typography |
+| **Icons & Typography** | ![Font Awesome](https://img.shields.io/badge/Font_Awesome-6.5.1-528DD7?style=flat-square&logo=fontawesome) ![Google Fonts](https://img.shields.io/badge/Google_Fonts-Inter%20%26%20JetBrains%20Mono-4285F4?style=flat-square&logo=googlefonts) | **FontAwesome 6.5.1**, **Google Fonts** (*Inter* for primary text, *JetBrains Mono* for financial values) |
+| **Data Export Engine** | ![CSV Export](https://img.shields.io/badge/CSV-Streaming_Export-217346?style=flat-square&logo=microsoftexcel) | **Streaming CSV Exporter** — On-the-fly export of filtered transaction histories using Python's `csv` module |
+| **Testing & QA** | ![Django Test](https://img.shields.io/badge/Django-Test_Runner-44B78B?style=flat-square&logo=django&logoColor=44B78B) | **Django TestCase** — Automated unit testing for auth, deposit logic, withdrawal validation & overdraft checks |
 
 ---
 
@@ -59,7 +60,7 @@ A secure, modern, full-featured Bank Account Transaction Management System built
 ### 1. User Authentication & Security
 - **User Registration**: Custom registration form automatically generates a unique 10-digit bank account number and supports an optional initial deposit.
 - **Password Visibility Toggle**: Interactive eye icon inside password fields on Login and Registration forms for seamless user experience.
-- **Login / Logout**: Secure authentication flow with instant feedback notifications.
+- **Login / Logout**: Secure authentication flow with instant **Notyf** toast feedback notifications.
 - **Data Isolation**: Strict access control ensuring users can never view, edit, or access another user's bank account or transaction history.
 
 ### 2. Bank Account Management
