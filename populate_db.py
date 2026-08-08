@@ -13,8 +13,13 @@ from accounts.models import BankAccount
 from transactions.models import Transaction
 
 def create_sample_data():
-    print("Populating database with realistic sample data...")
+    print("Resetting database and populating with fresh realistic sample data...")
     
+    # 0. Clean full database (delete existing transactions, bank accounts, and non-superuser accounts)
+    Transaction.objects.all().delete()
+    BankAccount.objects.all().delete()
+    User.objects.filter(is_superuser=False).delete()
+
     # 1. Create Superuser (Admin)
     if not User.objects.filter(username='admin').exists():
         User.objects.create_superuser('admin', 'admin@example.com', 'admin123')

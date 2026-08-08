@@ -102,7 +102,8 @@ pip install django
 
 ### 5. Database Setup & Sample Data Seeding
 ```bash
-# Apply database migrations
+# Create and apply database migrations
+python manage.py makemigrations
 python manage.py migrate
 
 # Seed database with sample users & transactions (Optional - pre-populated database included)
