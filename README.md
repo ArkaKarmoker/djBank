@@ -42,7 +42,7 @@ A secure, modern, full-featured Bank Account Transaction Management System built
 - **Newest First**: Sorted in reverse chronological order (`-timestamp`).
 - **Advanced Filtering**: Filter by transaction type (All, Deposit, Withdrawal) and custom date range (Start Date to End Date).
 - **Pagination**: Clean paginated transaction history table (8 items per page) with page navigation controls.
-- **CSV Export**: Direct downloadable account statement in `.csv` format respecting active filters.
+- **CSV Export**: Direct downloadable account statement in `.csv` format respecting active filters (Sample demo file included: [`statement_1002948192.csv`](./statement_1002948192.csv)).
 
 ### 5. Interactive Dashboard & Analytics
 - **Summary Cards**: Quick metrics for Current Balance, Total Deposit Amount, Total Withdrawal Amount, and Total Transactions Count.
@@ -212,7 +212,14 @@ djBank/
 ├── screenshots/               # Application UI screenshots
 ├── populate_db.py             # Database seeding script
 ├── db.sqlite3                 # Pre-populated Sample SQLite Database
+├── statement_1002948192.csv   # Sample exported CSV bank statement
 ├── requirements.txt           # Project dependencies file
 ├── manage.py                  # Django CLI runner
 └── README.md                  # Project Documentation
 ```
+
+---
+
+Thank you for taking the time to review the **djBank** project!
+
+Developed by [Arka Karmoker](https://github.com/ArkaKarmoker).
