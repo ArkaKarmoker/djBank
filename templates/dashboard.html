@@ -1,0 +1,305 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard — djBank{% endblock %}
+
+{% block content %}
+<!-- ═══ Welcome Banner ═══ -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="welcome-banner d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+            <div class="flex-grow-1">
+                <h3 class="greeting mb-1">Welcome back, {{ account.account_holder_name }}</h3>
+                <div class="d-flex flex-wrap align-items-center gap-2" style="color: var(--text-secondary); font-size: 0.85rem;">
+                    <span class="account-badge">
+                        <i class="fas fa-hashtag" style="font-size: 0.65rem;"></i>
+                        {{ account.account_number }}
+                    </span>
+                    <span style="color: var(--text-tertiary);">•</span>
+                    <span>Opened {{ account.created_at|date:"M d, Y" }}</span>
+                </div>
+            </div>
+            <div class="d-flex gap-2 welcome-actions">
+                <a href="{% url 'deposit' %}" class="btn btn-action-deposit">
+                    <i class="fas fa-plus me-1"></i> Deposit
+                </a>
+                <a href="{% url 'withdraw' %}" class="btn btn-action-withdraw">
+                    <i class="fas fa-minus me-1"></i> Withdraw
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ 4-Column Stats ═══ -->
+<div class="row g-3 mb-4">
+    <div class="col-6 col-lg-3">
+        <div class="glass-card stat-card h-100">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <span class="stat-label">Current Balance</span>
+                <div class="stat-icon-box blue">
+                    <i class="fas fa-wallet"></i>
+                </div>
+            </div>
+            <div class="stat-value">${{ account.balance|floatformat:2 }}</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="glass-card stat-card deposit-card h-100">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <span class="stat-label">Total Deposits</span>
+                <div class="stat-icon-box green">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+            </div>
+            <div class="stat-value green">${{ total_deposits|floatformat:2 }}</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="glass-card stat-card withdraw-card h-100">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <span class="stat-label">Total Withdrawals</span>
+                <div class="stat-icon-box red">
+                    <i class="fas fa-arrow-up"></i>
+                </div>
+            </div>
+            <div class="stat-value red">${{ total_withdrawals|floatformat:2 }}</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="glass-card stat-card h-100">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <span class="stat-label">Transactions</span>
+                <div class="stat-icon-box cyan">
+                    <i class="fas fa-repeat"></i>
+                </div>
+            </div>
+            <div class="stat-value">{{ total_transactions_count }}</div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ Charts Row ═══ -->
+<div class="row g-3 mb-4">
+    <!-- Balance Trend -->
+    <div class="col-lg-8">
+        <div class="glass-card p-4 h-100">
+            <div class="section-header">
+                <div class="section-icon stat-icon-box blue"><i class="fas fa-chart-line"></i></div>
+                <div>
+                    <h5>Balance Trend</h5>
+                    <span style="color: var(--text-tertiary); font-size: 0.72rem;">Recent account activity</span>
+                </div>
+            </div>
+            <div style="position: relative; height: 260px;">
+                <canvas id="balanceChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit vs Withdrawal Ratio -->
+    <div class="col-lg-4">
+        <div class="glass-card p-4 h-100 d-flex flex-column">
+            <div class="section-header mb-2">
+                <div class="section-icon stat-icon-box green"><i class="fas fa-chart-pie"></i></div>
+                <h5>Volume Ratio</h5>
+            </div>
+            <div style="position: relative; height: 210px;" class="d-flex align-items-center justify-content-center flex-grow-1">
+                <canvas id="ratioChart"></canvas>
+            </div>
+            <div class="d-flex align-items-center justify-content-center gap-3 pt-2">
+                <div class="d-flex align-items-center gap-2">
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #34d399; display: inline-block;"></span>
+                    <span style="font-size: 0.78rem; font-weight: 500; color: var(--text-secondary);">Deposits</span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #f87171; display: inline-block;"></span>
+                    <span style="font-size: 0.78rem; font-weight: 500; color: var(--text-secondary);">Withdrawals</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ Monthly Summary + Recent Transactions ═══ -->
+<div class="row g-3 mb-4">
+    <!-- Monthly Summary -->
+    <div class="col-lg-6">
+        <div class="glass-card p-4 h-100">
+            <div class="section-header">
+                <div class="section-icon stat-icon-box amber"><i class="fas fa-calendar-days"></i></div>
+                <h5>Monthly Summary</h5>
+            </div>
+            {% if monthly_summary %}
+            <div class="table-responsive">
+                <table class="table table-custom">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Deposits</th>
+                            <th>Withdrawals</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for month, data in monthly_summary.items %}
+                        <tr>
+                            <td class="fw-semibold">{{ month }}</td>
+                            <td class="text-green fw-bold">+${{ data.deposits|floatformat:2 }}</td>
+                            <td class="text-red fw-bold">-${{ data.withdrawals|floatformat:2 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-4">
+                <i class="fas fa-calendar-xmark fa-2x mb-2 text-dim"></i>
+                <p class="mb-0 text-dim small">No monthly data yet.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="col-lg-6">
+        <div class="glass-card p-4 h-100">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="section-header mb-0">
+                    <div class="section-icon stat-icon-box cyan"><i class="fas fa-clock-rotate-left"></i></div>
+                    <h5>Recent Transactions</h5>
+                </div>
+                <a href="{% url 'history' %}" class="btn btn-sm px-3 py-1" style="background: var(--accent-glow); color: var(--accent); border: 1px solid var(--border-hover); border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;">
+                    View All
+                </a>
+            </div>
+            {% if recent_transactions %}
+            <div class="table-responsive">
+                <table class="table table-custom">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for tx in recent_transactions %}
+                        <tr>
+                            <td>
+                                {% if tx.transaction_type == 'DEPOSIT' %}
+                                <span class="badge-deposit"><i class="fas fa-arrow-down"></i> Deposit</span>
+                                {% else %}
+                                <span class="badge-withdraw"><i class="fas fa-arrow-up"></i> Withdrawal</span>
+                                {% endif %}
+                            </td>
+                            <td class="fw-bold {% if tx.transaction_type == 'DEPOSIT' %}text-green{% else %}text-red{% endif %}">
+                                {% if tx.transaction_type == 'DEPOSIT' %}+{% else %}-{% endif %}${{ tx.amount|floatformat:2 }}
+                            </td>
+                            <td class="text-dim small">{{ tx.timestamp|date:"M d, H:i" }}</td>
+                            <td class="fw-semibold">${{ tx.balance_after_transaction|floatformat:2 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-4">
+                <i class="fas fa-receipt fa-2x mb-2 text-dim"></i>
+                <p class="mb-0 text-dim small">No transactions yet. Make a deposit to get started!</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const chartDates = {{ chart_dates|safe }};
+    const chartBalances = {{ chart_balances|safe }};
+
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+    const gridColor = isDark ? 'rgba(59,130,246,0.06)' : 'rgba(0,0,0,0.05)';
+    const tickColor = isDark ? '#64748b' : '#9ca3af';
+
+    // Balance History Line Chart
+    const ctxBalance = document.getElementById('balanceChart');
+    if (ctxBalance && chartDates.length > 0) {
+        new Chart(ctxBalance, {
+            type: 'line',
+            data: {
+                labels: chartDates,
+                datasets: [{
+                    label: 'Balance ($)',
+                    data: chartBalances,
+                    borderColor: '#3b82f6',
+                    backgroundColor: isDark
+                        ? 'rgba(59,130,246,0.12)'
+                        : 'rgba(37,99,235,0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#3b82f6',
+                    pointBorderColor: isDark ? '#1e293b' : '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    borderWidth: 2.5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: tickColor, font: { size: 10 } }
+                    },
+                    y: {
+                        grid: { color: gridColor },
+                        ticks: {
+                            color: tickColor,
+                            font: { size: 10 },
+                            callback: v => '$' + v.toLocaleString()
+                        }
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                }
+            }
+        });
+    }
+
+    // Doughnut Chart
+    const ctxRatio = document.getElementById('ratioChart');
+    if (ctxRatio) {
+        new Chart(ctxRatio, {
+            type: 'doughnut',
+            data: {
+                labels: ['Deposits', 'Withdrawals'],
+                datasets: [{
+                    data: [{{ total_deposits|default:0 }}, {{ total_withdrawals|default:0 }}],
+                    backgroundColor: ['#34d399', '#f87171'],
+                    borderWidth: 0,
+                    spacing: 2,
+                    pointStyle: 'circle'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
+{% endblock %}
