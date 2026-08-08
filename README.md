@@ -199,19 +199,19 @@ python manage.py test
 <a id="ui-screenshots-showcase"></a>
 ## 📸 UI Screenshots Showcase
 
-> **Note**: All 17 high-resolution application UI and admin panel screenshots are stored inside the [`screenshots/`](./screenshots) directory in this repository.
+> **Note**: All 19 high-resolution application UI and admin panel screenshots are stored inside the [`screenshots/`](./screenshots) directory in this repository.
 
 ### 🎨 Application Views (Light & Dark Mode)
 
 #### 1. Registration Page
 | Light Theme | Dark Theme |
 | :---: | :---: |
-| ![Registration Light](<screenshots/1. Registration Page Light.jpeg>) | ![Registration Dark](<screenshots/2. Registration Page Dark.jpeg>) |
+| ![Registration Light](<screenshots/1. Registration Light.jpeg>) | ![Registration Dark](<screenshots/2. Registration Dark.jpeg>) |
 
 #### 2. Login Page
 | Light Theme | Dark Theme |
 | :---: | :---: |
-| ![Login Light](<screenshots/3. Login Page Light.jpeg>) | ![Login Dark](<screenshots/4. Login Page Dark.jpeg>) |
+| ![Login Light](<screenshots/3. Login Light.jpeg>) | ![Login Dark](<screenshots/4. Login Dark.jpeg>) |
 
 #### 3. Dashboard
 | Light Theme | Dark Theme |
@@ -238,16 +238,21 @@ python manage.py test
 | :---: | :---: |
 | ![Responsive Light](<screenshots/13. Responsive Light.png>) | ![Responsive Dark](<screenshots/14. Responsive Dark.png>) |
 
+#### 8. Toast Notifications (Notyf)
+| Success Toast | Error Toast |
+| :---: | :---: |
+| ![Success Toast](<screenshots/15. Success Message Toast.jpeg>) | ![Error Toast](<screenshots/16. Error Message Toast.jpeg>) |
+
 ---
 
 ### ⚙️ Django Admin Panel Views
 
 | Bank Accounts | Users List |
 | :---: | :---: |
-| ![Admin Bank Accounts](<screenshots/15. Admin Panel Bank Accounts.jpeg>) | ![Admin Users](<screenshots/16. Admin Panel Users.jpeg>) |
+| ![Admin Bank Accounts](<screenshots/17. Admin Panel Bank Accounts.jpeg>) | ![Admin Users](<screenshots/18. Admin Panel Users.jpeg>) |
 
 #### Admin Transactions
-![Admin Transactions](<screenshots/17. Admin Panel Transactions.jpeg>)
+![Admin Transactions](<screenshots/19. Admin Panel Transactions.jpeg>)
 
 ---
 
