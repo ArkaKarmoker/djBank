@@ -80,8 +80,8 @@ Follow these steps to set up and run the project locally:
 
 ### 2. Clone the Repository
 ```bash
-git clone https://github.com/ArkaKarmoker/Bank-Account-Transaction-Management-System.git
-cd Bank-Account-Transaction-Management-System
+git clone https://github.com/ArkaKarmoker/djBank.git
+cd djBank
 ```
 
 ### 3. Create & Activate Virtual Environment
@@ -130,6 +130,8 @@ python manage.py test
 ---
 
 ## 📸 UI Screenshots Showcase
+
+> **Note**: All 17 high-resolution application UI and admin panel screenshots are stored inside the [`screenshots/`](./screenshots) directory in this repository.
 
 ### 🎨 Application Views (Light & Dark Mode)
 
@@ -184,7 +186,7 @@ python manage.py test
 ## 📁 Project Architecture & Directory Structure
 
 ```text
-Bank-Account-Transaction-Management-System/
+djBank/
 ├── accounts/                  # User Authentication & Account App
 │   ├── models.py              # BankAccount Model definition
 │   ├── views.py               # Register, Login, Logout views
