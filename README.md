@@ -104,7 +104,7 @@ The project comes with a pre-populated **Sample Database** (`db.sqlite3`) and an
 | **Demo User 1** | `arka_karmoker` | `Password123` | `1002003004` | ~$29,114.80 | 50 realistic transactions |
 | **Demo User 2** | `john_doe` | `Password123` | `1002948192` | ~$20,172.39 | 35 realistic transactions |
 | **Demo User 3** | `jane_smith` | `Password123` | `9876543210` | ~$12,322.21 | 25 realistic transactions |
-| **Superuser / Admin** | `admin` | `admin123` | N/A | N/A | Admin access to Django admin panel |
+| **Superuser / Admin** | `admin` | `admin123` | N/A | N/A | Access to Django Admin Panel (`http://127.0.0.1:8000/admin/`) |
 
 ---
 
@@ -117,19 +117,37 @@ Follow these steps to set up and run the project locally:
 - **Python 3.12+** (Tested on Python **3.12.10**) installed on your system.
 
 ### 2. Clone the Repository
+Clone the repository:
 ```bash
 git clone https://github.com/ArkaKarmoker/djBank.git
+```
+
+Navigate into the project directory:
+```bash
 cd djBank
 ```
 
 ### 3. Create & Activate Virtual Environment
-```bash
-# On Windows (PowerShell):
-python -m venv venv
-.\venv\Scripts\activate
 
-# On macOS / Linux:
+#### On Windows (PowerShell):
+Create virtual environment:
+```bash
+python -m venv venv
+```
+
+Activate virtual environment:
+```bash
+.\venv\Scripts\activate
+```
+
+#### On macOS / Linux:
+Create virtual environment:
+```bash
 python3 -m venv venv
+```
+
+Activate virtual environment:
+```bash
 source venv/bin/activate
 ```
 
@@ -139,12 +157,19 @@ pip install -r requirements.txt
 ```
 
 ### 5. Database Setup & Sample Data Seeding
-```bash
-# Create and apply database migrations
-python manage.py makemigrations
-python manage.py migrate
 
-# Seed database with sample users & transactions (Optional - pre-populated database included)
+Create database migrations:
+```bash
+python manage.py makemigrations
+```
+
+Apply database migrations:
+```bash
+python manage.py migrate
+```
+
+Seed database with sample users & transactions (Optional — pre-populated database included):
+```bash
 python populate_db.py
 ```
 
@@ -153,7 +178,9 @@ python populate_db.py
 python manage.py runserver
 ```
 
-Open your web browser and navigate to: `http://127.0.0.1:8000/`
+Open your web browser and navigate to:
+- **Application Dashboard**: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+- **Django Admin Panel**: [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
 
 ---
 
