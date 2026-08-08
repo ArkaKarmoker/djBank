@@ -15,10 +15,9 @@ from transactions.models import Transaction
 def create_sample_data():
     print("Resetting database and populating with fresh realistic sample data...")
     
-    # 0. Clean full database (delete existing transactions, bank accounts, and non-superuser accounts)
-    Transaction.objects.all().delete()
-    BankAccount.objects.all().delete()
-    User.objects.filter(is_superuser=False).delete()
+    # 0. Clean full database (completely wipe all data for a fresh start)
+    from django.core.management import call_command
+    call_command('flush', interactive=False)
 
     # 1. Create Superuser (Admin)
     if not User.objects.filter(username='admin').exists():
@@ -29,6 +28,16 @@ def create_sample_data():
 
     # Define User Profiles
     users_data = [
+        {
+            'username': 'arka_karmoker',
+            'first_name': 'Arka',
+            'last_name': 'Karmoker',
+            'email': 'arka@example.com',
+            'password': 'Password123',
+            'account_number': '1002003004',
+            'base_salary': Decimal('5500.00'),
+            'transaction_count': 50
+        },
         {
             'username': 'john_doe',
             'first_name': 'John',
@@ -154,8 +163,9 @@ def create_sample_data():
 
     print("\nDatabase seeded successfully!")
     print("Demo Users:")
-    print("1. Username: john_doe | Password: Password123")
-    print("2. Username: jane_smith | Password: Password123")
+    print("1. Username: arka_karmoker | Password: Password123")
+    print("2. Username: john_doe | Password: Password123")
+    print("3. Username: jane_smith | Password: Password123")
 
 if __name__ == '__main__':
     create_sample_data()

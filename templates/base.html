@@ -21,6 +21,9 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <!-- Notyf CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+
     <!-- Custom Design System -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
@@ -117,24 +120,7 @@
     <!-- ═══ Main Content ═══ -->
     <main class="container py-3 py-md-4 flex-grow-1 d-flex flex-column" style="position: relative; z-index: 1;">
 
-        <!-- Flash Messages -->
-        {% if messages %}
-        <div class="mb-3">
-            {% for message in messages %}
-            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags|default:'info' }}{% endif %} alert-dismissible fade show d-flex align-items-center gap-2" role="alert">
-                {% if message.tags == 'success' %}
-                    <i class="fas fa-check-circle"></i>
-                {% elif message.tags == 'error' %}
-                    <i class="fas fa-triangle-exclamation"></i>
-                {% else %}
-                    <i class="fas fa-circle-info"></i>
-                {% endif %}
-                {{ message }}
-                <button type="button" class="btn-close btn-close-sm ms-auto" data-bs-dismiss="alert"></button>
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
+        <!-- Flash Messages (Handled by Notyf JS below) -->
 
         {% block content %}{% endblock %}
     </main>
@@ -153,6 +139,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="{% static 'js/main.js' %}"></script>
+
+    <!-- Notyf JS & Init -->
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script>
+        const notyf = new Notyf({
+            duration: 4000,
+            position: { x: 'right', y: 'top' },
+            dismissible: true
+        });
+
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'error' or message.tags == 'danger' %}
+                    notyf.error("{{ message|escapejs }}");
+                {% else %}
+                    notyf.success("{{ message|escapejs }}");
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </script>
     {% block extra_scripts %}{% endblock %}
 
     <script>

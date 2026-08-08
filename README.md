@@ -100,8 +100,9 @@ The project comes with a pre-populated **Sample Database** (`db.sqlite3`) and an
 
 | Role | Username | Password | Account Number | Initial Balance | Sample Transactions |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Demo User 1** | `john_doe` | `Password123` | `1002948192` | ~$20,172.39 | 35 realistic transactions |
-| **Demo User 2** | `jane_smith` | `Password123` | `9876543210` | ~$12,322.21 | 25 realistic transactions |
+| **Demo User 1** | `arka_karmoker` | `Password123` | `1002003004` | ~$29,114.80 | 50 realistic transactions |
+| **Demo User 2** | `john_doe` | `Password123` | `1002948192` | ~$20,172.39 | 35 realistic transactions |
+| **Demo User 3** | `jane_smith` | `Password123` | `9876543210` | ~$12,322.21 | 25 realistic transactions |
 | **Superuser / Admin** | `admin` | `admin123` | N/A | N/A | Admin access to Django admin panel |
 
 ---
