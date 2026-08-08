@@ -97,7 +97,7 @@ source venv/bin/activate
 
 ### 4. Install Dependencies
 ```bash
-pip install django
+pip install -r requirements.txt
 ```
 
 ### 5. Database Setup & Sample Data Seeding
@@ -212,6 +212,7 @@ djBank/
 ├── screenshots/               # Application UI screenshots
 ├── populate_db.py             # Database seeding script
 ├── db.sqlite3                 # Pre-populated Sample SQLite Database
+├── requirements.txt           # Project dependencies file
 ├── manage.py                  # Django CLI runner
 └── README.md                  # Project Documentation
 ```
