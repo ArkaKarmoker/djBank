@@ -18,22 +18,24 @@ A secure, modern, full-featured Bank Account Transaction Management System built
 ---
 
 ## 📋 Table of Contents
-- [Project Overview](#-project-overview)
-- [Technology Stack](#-technology-stack)
-- [Key Features](#-key-features)
-- [Sample Database & Demo Credentials](#-sample-database--demo-credentials)
-- [Installation & Local Setup Guide](#-installation--local-setup-guide)
-- [Automated Testing](#-automated-testing)
-- [UI Screenshots Showcase](#-ui-screenshots-showcase)
-- [Project Architecture & Directory Structure](#-project-architecture--directory-structure)
+- [Project Overview](#project-overview)
+- [Technology Stack](#technology-stack)
+- [Key Features](#key-features)
+- [Sample Database & Demo Credentials](#sample-database-demo-credentials)
+- [Installation & Local Setup Guide](#installation-setup-guide)
+- [Automated Testing](#automated-testing)
+- [UI Screenshots Showcase](#ui-screenshots-showcase)
+- [Project Architecture & Directory Structure](#project-architecture)
 
 ---
 
+<a id="project-overview"></a>
 ## 🌟 Project Overview
 **djBank** is designed to provide users with an intuitive, secure banking environment to manage their funds, monitor transaction histories, analyze monthly cash flow, and export account statements. The application strictly enforces data isolation and access controls so authenticated users can only view and interact with their own financial records.
 
 ---
 
+<a id="technology-stack"></a>
 ## 🛠️ Technology Stack
 
 | Layer / Category | Technology / Badge | Details & Purpose |
@@ -51,6 +53,7 @@ A secure, modern, full-featured Bank Account Transaction Management System built
 
 ---
 
+<a id="key-features"></a>
 ## ✨ Key Features
 
 ### 1. User Authentication & Security
@@ -88,6 +91,7 @@ A secure, modern, full-featured Bank Account Transaction Management System built
 
 ---
 
+<a id="sample-database-demo-credentials"></a>
 ## 🗄️ Sample Database & Demo Credentials
 
 The project comes with a pre-populated **Sample Database** (`db.sqlite3`) and an automated database seeding script (`populate_db.py`).
@@ -102,6 +106,7 @@ The project comes with a pre-populated **Sample Database** (`db.sqlite3`) and an
 
 ---
 
+<a id="installation-setup-guide"></a>
 ## 🚀 Installation & Local Setup Guide
 
 Follow these steps to set up and run the project locally:
@@ -150,6 +155,7 @@ Open your web browser and navigate to: `http://127.0.0.1:8000/`
 
 ---
 
+<a id="automated-testing"></a>
 ## 🧪 Automated Testing
 
 The application includes unit tests covering User Authentication, Account Creation, Deposit validation, Overdraft prevention, and Transaction logging.
@@ -161,6 +167,7 @@ python manage.py test
 
 ---
 
+<a id="ui-screenshots-showcase"></a>
 ## 📸 UI Screenshots Showcase
 
 > **Note**: All 17 high-resolution application UI and admin panel screenshots are stored inside the [`screenshots/`](./screenshots) directory in this repository.
@@ -215,6 +222,7 @@ python manage.py test
 
 ---
 
+<a id="project-architecture"></a>
 ## 📁 Project Architecture & Directory Structure
 
 ```text
